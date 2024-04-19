@@ -51,9 +51,20 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC18D5952BD22C3C00DA5E51"
+               BlueprintIdentifier = "BCCD2E6C2BD2B266002BF8C1"
                BuildableName = "EssentialAppUIAcceptanceTests.xctest"
                BlueprintName = "EssentialAppUIAcceptanceTests"
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC782E462BD2B94600354CEA"
+               BuildableName = "EssentialAppUITests.xctest"
+               BlueprintName = "EssentialAppUITests"
                ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
