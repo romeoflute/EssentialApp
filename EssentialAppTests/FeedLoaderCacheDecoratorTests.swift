@@ -7,26 +7,7 @@
 
 import XCTest
 import EssentialFeed
-
-// Lesson: The loader (with load func) is separate from the cache (with save function and thus does have a side effect). This decorator pattern adds the saving behavior to the loader decoratee without changing the original loader
-final class FeedLoaderCacheDecorator: FeedLoader {
-	private let decoratee: FeedLoader
-    private let cache: FeedCache
-
-    init(decoratee: FeedLoader, cache: FeedCache) {
-		self.decoratee = decoratee
-        self.cache = cache
-	}
-
-	func load(completion: @escaping (FeedLoader.Result) -> Void) {
-		decoratee.load { [weak self] result in
-            completion(result.map { feed in
-				self?.cache.save(feed) { _ in }
-                return feed
-			})
-		}
-	}
-}
+import EssentialApp
 
 class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
 
