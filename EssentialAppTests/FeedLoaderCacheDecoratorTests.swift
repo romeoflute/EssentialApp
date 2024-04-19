@@ -8,12 +8,6 @@
 import XCTest
 import EssentialFeed
 
-protocol FeedCache {
-	typealias Result = Swift.Result<Void, Error>
-
-	func save(_ feed: [FeedImage], completion: @escaping (Result) -> Void)
-}
-
 // Lesson: The loader (with load func) is separate from the cache (with save function and thus does have a side effect). This decorator pattern adds the saving behavior to the loader decoratee without changing the original loader
 final class FeedLoaderCacheDecorator: FeedLoader {
 	private let decoratee: FeedLoader
