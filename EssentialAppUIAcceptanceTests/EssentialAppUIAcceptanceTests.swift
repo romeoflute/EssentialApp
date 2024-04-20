@@ -10,7 +10,7 @@ import XCTest
 final class EssentialAppUIAcceptanceTests: XCTestCase {
     func test_onLaunch_displaysRemoteFeedWhenCustomerHasConnectivity() {
         let app = XCUIApplication()
-        app.launchArguments = ["-connectivity", "online"]
+        app.launchArguments = ["-reset, -connectivity", "online"]
         app.launch()
         
         let cells = app.cells.matching(identifier: "FeedImageCell")
@@ -25,10 +25,11 @@ final class EssentialAppUIAcceptanceTests: XCTestCase {
     
     func test_onLaunch_displaysCachedRemoteFeedWhenCustomerHasNoConnectivity() {
         let onlineApp = XCUIApplication()
+        onlineApp.launchArguments = ["-reset, -connectivity", "online"]
         onlineApp.launch()
         
         let offlineApp = XCUIApplication()
-        offlineApp.launchArguments = ["-connectivity", "offline"]
+        offlineApp.launchArguments = [" -connectivity", "offline"]
         offlineApp.launch()
         
         let cells = offlineApp.cells.matching(identifier: "FeedImageCell")
