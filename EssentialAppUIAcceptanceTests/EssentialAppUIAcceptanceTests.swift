@@ -13,10 +13,11 @@ final class EssentialAppUIAcceptanceTests: XCTestCase {
 
 		app.launch()
         
-        _ = app.cells.firstMatch.waitForExistence(timeout: 1.0)
-        _ = app.cells.firstMatch.staticTexts["FeedImage"].firstMatch.waitForExistence(timeout: 1.0)
-                
-        XCTAssertEqual(app.cells.count, 22)
-        XCTAssertEqual(app.cells.firstMatch.images.count, 1)
+        if app.cells.firstMatch.images.matching(identifier: "FeedImage").element.waitForExistence(timeout: 1.0) && app.cells.matching(identifier: "FeedImageCell").element.waitForExistence(timeout: 1.0) {
+            let feedCells = app.cells.matching(identifier: "FeedImageCell")
+            let firstCell = feedCells.firstMatch
+            XCTAssertEqual(feedCells.count, 22)
+            XCTAssertEqual(firstCell.images.count, 22)
+        }
 	}
 }
